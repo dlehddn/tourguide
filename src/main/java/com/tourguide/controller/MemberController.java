@@ -36,11 +36,16 @@ public class MemberController {
     }
     @PostMapping("/setmember")
     public int setmember(MemberDto memberDto){
+        System.out.println(
+            memberDto.toString()
+        );
         return memberService.setmember(memberDto);
 
 
     }
-
     
-    
+    @GetMapping("/getmember")
+    public int getmember(String mid ,String mpassword){
+      return memberService.getmember(mid, mpassword); 
+    }
 }

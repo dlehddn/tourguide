@@ -10,9 +10,28 @@
     <h3>회원가입 페이지</h3>
     <div>
         <form id="signupForm">
-            아이디:<input type="text" name="mid"><br>
-            비밀번호:<input type="password" name="mpassword">
-            <button type="submit" class="signupbtn" onclick="signup();">회원가입</button>
+            아이디: <input type="text" name="mid"><br>
+            비밀번호: <input type="password" name="mpassword"><br>
+            MBTI: <select name="mmbti">
+               <option value = "ISTJ"> ISTJ </option>
+               <option value = "ISTP"> ISTP </option>
+               <option value = "ISFJ"> ISFJ </option>
+               <option value = "ISFP"> ISFP </option>
+               <option value = "INTJ"> INTJ </option>
+               <option value = "INTP"> INTP </option>
+               <option value = "INFJ"> INFJ </option>
+               <option value = "INFP"> INFP </option>
+               <option value = "ESTJ"> ESTJ </option>
+               <option value = "ESTP"> ESTP </option>
+               <option value = "ESFJ"> ESFJ </option>
+               <option value = "ESFP"> ESFP </option>
+               <option value = "ENTJ"> ENTJ </option>
+               <option value = "ENTP"> ENTP </option>
+               <option value = "ENFJ"> ENFJ </option>
+               <option value = "ENFP"> ENFP </option>
+            </select>
+
+            <button type="button" class="signupbtn" onclick="signup();">회원가입</button>
 
 
 
@@ -23,6 +42,6 @@
     </div>
 
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="/js/member/signup.js"></script>
+    <script src="/js/signup.js"></script>
 </body> 
 </html>

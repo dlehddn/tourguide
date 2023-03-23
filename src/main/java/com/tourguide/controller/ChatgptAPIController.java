@@ -24,8 +24,8 @@ public class ChatgptAPIController {
 
     @PostMapping("/postchat")
     public ResponseEntity<?> sendQuestion(@RequestBody String request) {
-        //1번에 발급받은 API key를 붙여 넣는다.
-        OpenAiService service = new OpenAiService("        ");
+        
+        OpenAiService service = new OpenAiService("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");
         CompletionRequest completionRequest = CompletionRequest.builder()
             .prompt(request)
             .model("text-davinci-003") // 이 모델로 해줘야 제대로 대화가 된다. 하지만 한국어는 잘 안된다. 다른 모델을 써야할듯...

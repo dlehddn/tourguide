@@ -19,6 +19,9 @@ public class MemberDto {
     private String mpassword;
 
 
+    private String mmbti;
+
+
 
     public MemberEntity toEntity(){
 
@@ -26,6 +29,7 @@ public class MemberDto {
             .mno(this.mno)
             .mid(this.mid)
             .mpassword(this.mpassword)
+            .mmbti(this.mmbti)
             .build();
     }
 

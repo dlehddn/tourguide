@@ -31,11 +31,16 @@ public class MemberEntity {
     @Column(nullable = false)
     private String mpassword;
 
+    @Column(nullable = true)
+    private String mmbti;
+
+
     public MemberDto toDto(){
         return MemberDto.builder()
             .mno(this.mno)
             .mid(this.mid)
             .mpassword(this.mpassword)
+            .mmbti(this.mmbti)
             .build();
 
 
