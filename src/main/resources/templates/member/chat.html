@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>여행일정 추천</title>
+	
+</head>
+<body>
+	<label for="travel-region">여행지역</label>
+	<input type="text" id="travel-region" name="travel-region">
+
+	<label for="travel-days">여행일수</label>
+	<input type="number" id="travel-days" name="travel-days" min="1">
+
+	<button id="recommend-btn">추천</button>
+
+	<div id="result"></div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="js/chatAPI.js"></script>
+</body>
+</html>

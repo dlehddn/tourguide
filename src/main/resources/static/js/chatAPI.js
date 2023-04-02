@@ -1,21 +1,26 @@
+$(document).ready(function() {
+	$('#recommend-btn').click(function() {
+		var region = $('#travel-region').val();
+		var days = $('#travel-days').val();
 
+		if (region == "" || days == "") {
+			alert("여행지역과 여행일수를 입력해주세요.");
+			return;
+		}
 
-chat();
-
-
-function chat() {
-    $.ajax({
-        url: "/postchat",
-        type: "POST",
-        data: "Please recommend today's 00000 ",
-
-        success: function(response){
-            let answer1 = JSON.stringify(response[0])
-            let answer2= JSON.parse(answer1)
-            const answer3= answer2.text
-            
-            document.querySelector('.box').innerHTML = answer3;
-            
-        }
-    })
-}
+		$.ajax({
+			type: "GET",
+			url: "/recommend",
+			data: {
+				region: region,
+				days: days
+			},
+			success: function(response) {
+				$('#result').html(response);
+			},
+			error: function(xhr, status, error) {
+				alert("에러 발생: " + error);
+			}
+		});
+	});
+});
