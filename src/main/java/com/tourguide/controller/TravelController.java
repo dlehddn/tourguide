@@ -33,13 +33,13 @@ public class TravelController {
     @ResponseBody
     public String recommend(@RequestParam("region") String region, @RequestParam("days") int days) {
         // ChatGPT API 호출 코드
-        String prompt = region + "에서\n" + days + "일동안\n" + "여행할건데\n관광지랑\n맛집을\n날짜별로\n소개해줘";
+        String prompt = region + "에서\n" + days + "일동안\n" + "여행할건데\n관광지랑\n맛집을\n날짜별로\n소개해주고\n각\n여행지의\n위도와경도값도\n알려줘";
         String response = callChatGPTAPI(prompt);
 
         // ChatGPT API 결과값 처리 코드
         String recommendation = response;
 
-        // region + "에서\n" + days + "일동안\n" + "여행할건데\n관광지랑\n맛집을\n일차별로\n소개해줘"
+       
 
         return recommendation;
     }
