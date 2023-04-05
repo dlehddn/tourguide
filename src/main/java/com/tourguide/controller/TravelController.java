@@ -3,12 +3,13 @@ package com.tourguide.controller;
 import org.json.JSONObject;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -58,7 +59,7 @@ public class TravelController {
             String topP = "1";
             String frequencyPenalty = "0";
             String presencePenalty = "0";
-            String apikey = "API_KEY 입력";
+            String apikey = "API_KEY 토큰 입력";
             
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("model", "text-davinci-003");
@@ -82,7 +83,13 @@ public class TravelController {
                     .build();
 
             Response response = client.newCall(request).execute();
-            return response.body().string();
+            
+            
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode rootNode = objectMapper.readTree(response.body().byteStream());
+            String response_text = rootNode.get("choices").get(0).get("text").asText();
+
+            return response_text;
         } catch (IOException e) {
             e.printStackTrace();
             return "";
