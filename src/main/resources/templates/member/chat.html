@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>여행일정 추천</title>
+	<link rel="stylesheet" href="css/chat.css">
 	
 </head>
 <body>
@@ -14,7 +15,12 @@
 
 	<button id="recommend-btn">추천</button>
 
-	<div id="result"></div>
+	<div class ="rinfo"></div>
+	<div>
+		여행정보 공유할 ID: <input type="text" class ="rid">
+		<button type="button" class="recommendbtn" onclick="recommendinfo();">저장</button>
+	</div>
+
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="js/chatAPI.js"></script>
 </body>

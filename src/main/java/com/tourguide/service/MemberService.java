@@ -21,6 +21,12 @@ public class MemberService {
     @Autowired
     private MemberRepository memberRepository;
 
+    public String getMno(){
+        Object rid = request.getSession().getAttribute("loginMno");
+        if(rid == null){return "0";}
+        else{return String.valueOf((Integer) rid);} // 형변환
+    }
+
     @Transactional
     public int setmember(MemberDto memberDto){
 
@@ -29,19 +35,14 @@ public class MemberService {
     }
 
     @Transactional
-    public int getmember( String mid ,String mpassword){
-        System.out.println("입력받은 아이디:"+mid);
-        System.out.println("입력받은 비밀번호:"+mpassword);
+    public int getmember(String mid ,String mpassword){
       List<MemberEntity> memlist = memberRepository.findAll();
       System.out.println(memlist);
            // 2. 입력받은 데이터와 일치값 찾기
         for( MemberEntity entity : memlist ){ // 리스트 반복
             if(entity.getMid().equals(mid)){ // 엔티티=레코드 의 이메일 과 입력받은 이메일
                 if( entity.getMpassword().equals(mpassword)){ // 엔티티=레코드 의 패스워드 와 입력받은 패스워드
-                    System.out.println("db에있는 아이디"+entity.getMid());
-                    System.out.println("db에있는 비밀번호"+entity.getMpassword());
                     request.getSession().setAttribute("loginMno" , entity.getMno() );
-                                                                // 엔티티 = 레코드 = 로그인 성공한객체
                     return 1;// 로그인 성공했다.
                 }
                else return 2; // 패스워드 틀림 [ 전제조건 : 아이디중복 없다는 전제조건

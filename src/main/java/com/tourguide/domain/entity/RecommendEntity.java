@@ -1,5 +1,5 @@
 package com.tourguide.domain.entity;
-import com.tourguide.domain.dto.MemberDto;
+import com.tourguide.domain.dto.RecommendDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,30 +14,26 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name="member")
+@Table(name="recommendinfo")
 @NoArgsConstructor
 @AllArgsConstructor@Getter@Setter@ToString@Builder
-public class MemberEntity {
+public class RecommendEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int mno;
-
-    @Column(nullable = false)
-    private String mid;
-
-    @Column(nullable = false)
-    private String mpassword;
+    private int rno;
 
     @Column(nullable = true)
-    private String mmbti;
+    private String rid;
+
+    @Column(length = 50000,nullable = false)
+    private String rinfo;
 
 
-    public MemberDto toDto(){
-        return MemberDto.builder()
-            .mno(this.mno)
-            .mid(this.mid)
-            .mpassword(this.mpassword)
-            .mmbti(this.mmbti)
+    public RecommendDto toDto(){
+        return RecommendDto.builder()
+            .rno(this.rno)
+            .rid(this.rid)
+            .rinfo(this.rinfo)
             .build();
     }
 }

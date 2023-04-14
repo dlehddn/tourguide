@@ -1,0 +1,5 @@
+.rinfo{
+    margin-top: 20px;
+    border: 1px solid black;
+    overflow:scroll; width:800px; height:500px;
+}
