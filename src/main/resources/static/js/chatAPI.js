@@ -57,11 +57,33 @@ function logincheck() {
 			return;
 			}
 			else {
-				alert(response)
 				alert("로그인 후 이용해주세요")
                 location.href = "/member/login"
 			}
 		}
 
 		})
+}
+function loadinfo() {
+    let info_id = document.querySelector(".info_id").value
+  
+	$.ajax({
+		type : "GET",
+		url:   "getinfo",
+		data: {
+			"info_id": info_id
+		},
+		success:function(response){
+			if(response != "") {
+				alert("대시보드 로드에 성공했습니다.")
+				$('.rinfo').html(response);
+			}else alert("존재하지 않는 비밀번호입니다.")
+			// 추가사항 적으세요
+		},
+        error: function(e) {
+			console.log("ERROR : ", e);
+		}
+
+	})
+
 }

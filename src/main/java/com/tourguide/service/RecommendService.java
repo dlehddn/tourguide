@@ -16,16 +16,22 @@ public class RecommendService {
     @Autowired
     private RecommendRepository recommendRepository;
 
-    @Autowired
-    private MemberService memberService;
-    
     @Transactional
     public int setinfo(RecommendDto recommendDto){ 
-    String rid = memberService.getMno();
-    recommendDto.setRid(rid); // recommendDto에 rid 설정
     RecommendEntity recommendEntity =  recommendRepository.save(recommendDto.toEntity());
      
     return recommendEntity.getRno();    
     }
 
+    @Transactional
+    public String getinfo(String info_id){
+    List<RecommendEntity> infolist = recommendRepository.findAll();
+        for(RecommendEntity entity : infolist) {
+            if(entity.getRid().equals(info_id)){
+                return entity.getRinfo(); 
+            }
+        }
+        return null;
+    }
 }
+

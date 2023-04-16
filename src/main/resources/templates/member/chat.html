@@ -7,17 +7,23 @@
 	
 </head>
 <body>
-	<label for="travel-region">여행지역</label>
+	<h3>My 대시보드</h3>
+
+    <label for="travel-password">대시보드 비밀번호:</label>
+	<input type="text" class="info_id">
+	<button id="load-btn" onclick="loadinfo();">기존 대시보드 불러오기</button><br><br>
+
+	<label for="travel-region">여행지역:</label>
 	<input type="text" id="travel-region" name="travel-region">
 
-	<label for="travel-days">여행일수</label>
+	<label for="travel-days">여행일수:</label>
 	<input type="number" id="travel-days" name="travel-days" min="1">
 
-	<button id="recommend-btn">추천</button>
+	<button id="recommend-btn">새로 추천받기</button>
 
 	<div class ="rinfo"></div>
 	<div>
-		여행정보 공유할 ID: <input type="text" class ="rid">
+		대시보드 비밀번호 설정: <input type="text" class ="rid">
 		<button type="button" class="recommendbtn" onclick="recommendinfo();">저장</button>
 	</div>
 

@@ -31,13 +31,14 @@ public class TravelController {
     private MemberService memberService;
     @Autowired 
     private RecommendService recommendService;
+    
 
     @GetMapping("/logincheck")
     public String getMno() {
         return memberService.getMno();
     }
 
-    @GetMapping("/chatgpt")
+    @GetMapping("/chat")
     public Resource getPage(){
 
         return new ClassPathResource("templates/member/chat.html");
@@ -48,17 +49,24 @@ public class TravelController {
         return recommendService.setinfo(recommendDto);
     }
 
+    @GetMapping("/getinfo")
+    public String getinfo(String info_id){
+        return recommendService.getinfo(info_id);
+    }
+
     @GetMapping("/recommend")
     @ResponseBody
     public String recommend(@RequestParam("region") String region, @RequestParam("days") int days) {
         // ChatGPT API 호출 코드
-        String prompt = "내 MBTI는 ENFP이고\n" + region + "에서\n" + days + "일동안\n" + "여행할건데 "
+
+        String mbti_type = memberService.getMmbti();
+        String prompt = "내" + mbti_type + "는 ENFP이고\n" + region + "에서\n" + days + "일동안\n" + "여행할건데 "
                         + "나의 MBTI성향에 대해 간단하게 설명해주고, 나한테 어울리는 여행코스를 맛집도 포함해서 날짜별로 자세한 설명과 함께 추천해줘.";
         String response = callChatGPTAPI(prompt);
 
         // ChatGPT API 결과값 처리 코드
         String recommendation = response;
-
+        System.out.println(recommendation);
        
 
         return recommendation;
@@ -73,7 +81,7 @@ public class TravelController {
             .writeTimeout(30, TimeUnit.SECONDS) // http 최대 요청시간 정의
             .build(); 
 
-            String apikey = "API_KEY 토큰 입력";
+            String apikey = "API_key 토큰 입력";
             
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("model", "text-davinci-003");

@@ -27,6 +27,12 @@ public class MemberService {
         else{return String.valueOf((Integer) rid);} // 형변환
     }
 
+    public String getMmbti(){
+        Object mbti = request.getSession().getAttribute("loginMmbti");
+        if(mbti == null){return "0";}
+        else{return String.valueOf(mbti);} // 형변환
+    }
+
     @Transactional
     public int setmember(MemberDto memberDto){
 
@@ -43,6 +49,7 @@ public class MemberService {
             if(entity.getMid().equals(mid)){ // 엔티티=레코드 의 이메일 과 입력받은 이메일
                 if( entity.getMpassword().equals(mpassword)){ // 엔티티=레코드 의 패스워드 와 입력받은 패스워드
                     request.getSession().setAttribute("loginMno" , entity.getMno() );
+                    request.getSession().setAttribute("loginMmbti" , entity.getMmbti() );
                     return 1;// 로그인 성공했다.
                 }
                else return 2; // 패스워드 틀림 [ 전제조건 : 아이디중복 없다는 전제조건

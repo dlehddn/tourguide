@@ -12,7 +12,7 @@ function login() {
         success:function(response){
             if(response =="1" ){
                 alert("로그인에 성공했습니다.")
-        
+                location.href = "/chat"
                 
             }else if(response == "2"){
                 alert("비밀번호가 틀렸습니다.")}
@@ -24,9 +24,4 @@ function login() {
         }
    })
     
-    
-    
-
-
-
 }
