@@ -24,15 +24,11 @@ public class MemberController {
     public Resource getsignupPage(){
 
         return new ClassPathResource("templates/member/signup.html");
-
-
     }
     @GetMapping("/login")
     public Resource getloginPage(){
 
         return new ClassPathResource("templates/member/login.html");
-
-
     }
     @PostMapping("/setmember")
     public int setmember(MemberDto memberDto){
@@ -40,10 +36,7 @@ public class MemberController {
             memberDto.toString()
         );
         return memberService.setmember(memberDto);
-
-
     }
-    
     @GetMapping("/getmember")
     public int getmember(String mid ,String mpassword){
       return memberService.getmember(mid, mpassword); 

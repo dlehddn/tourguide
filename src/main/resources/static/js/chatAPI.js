@@ -27,10 +27,8 @@ $(document).ready(function() {
 });
 
 function recommendinfo(){
-
 	let rinfo = document.querySelector('.rinfo').innerHTML;
 	let rid = document.querySelector('.rid').value;
-
 	console.log(rinfo, rid)
      $.ajax({
         type: "POST",
@@ -83,7 +81,5 @@ function loadinfo() {
         error: function(e) {
 			console.log("ERROR : ", e);
 		}
-
 	})
-
 }

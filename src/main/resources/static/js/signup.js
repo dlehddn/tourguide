@@ -3,7 +3,6 @@ function signup(){
 
     let formData = new FormData(document.querySelector("#signupForm"));
     
-
      $.ajax({
         type: "POST",
         url: "/member/setmember",
@@ -17,16 +16,7 @@ function signup(){
             }else{alert("회원가입 실패")}  
         },
         error: function (e) {
-            
             console.log("ERROR : ", e);
         }
-
-
-
     }); 
-
-
-
-
-
 }

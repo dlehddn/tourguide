@@ -19,9 +19,7 @@ function login() {
             else alert("존재하지 않는 회원정보입니다.")
         },
         error: function (e) {
-            
             console.log("ERROR : ", e);
         }
    })
-    
 }
