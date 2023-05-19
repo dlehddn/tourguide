@@ -72,7 +72,7 @@ public class TravelController {
             .writeTimeout(30, TimeUnit.SECONDS) // http 최대 요청시간 정의
             .build(); 
 
-            String apikey = "API_KET 입력";
+            String apikey = "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";
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("model", "text-davinci-003");
