@@ -66,6 +66,7 @@ public class TravelController {
     }
     private String callChatGPTAPI(String prompt) {
         try {
+            MediaType mediaType = MediaType.parse("application/json");
             OkHttpClient client = new OkHttpClient.Builder()
             .connectTimeout(300, TimeUnit.SECONDS)
             .readTimeout(300, TimeUnit.SECONDS)
@@ -92,16 +93,16 @@ public class TravelController {
             jsonObject.put("stream", false);
             String json = jsonObject.toString(); 
 
-            MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
             RequestBody body = RequestBody.create(json, mediaType);
             Request request = new Request.Builder()
                     .url("https://api.openai.com/v1/completions")
                     .post(body)
                     .addHeader("Content-Type", "application/json")
-                    .addHeader("Authorization", "Bearer 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")
+                    .addHeader("Authorization", "Bearer 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")
                     .build();
 
             Response response = client.newCall(request).execute();
+            System.out.println(response);
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode rootNode = objectMapper.readTree(response.body().string());
             String response_text = rootNode.get("choices").get(0).get("text").asText();
