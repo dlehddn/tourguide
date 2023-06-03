@@ -98,7 +98,7 @@ public class TravelController {
                     .url("https://api.openai.com/v1/completions")
                     .post(body)
                     .addHeader("Content-Type", "application/json")
-                    .addHeader("Authorization", "Bearer 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")
+                    .addHeader("Authorization", "Bearer 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")
                     .build();
 
             Response response = client.newCall(request).execute();
